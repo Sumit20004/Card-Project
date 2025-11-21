@@ -1,0 +1,195 @@
+/* -------------------- RESET -------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+body {
+    background: #0f0f0f;
+}
+
+/* -------------------- GRID CONTAINER -------------------- */
+.parent {
+    width: 100%;
+    padding: 60px 40px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 35px;
+
+    justify-content: center;
+}
+
+/* -------------------- CARD -------------------- */
+.card {
+    width: 100%;
+    min-height: 350px;
+
+    background: #fff;
+    border-radius: 22px;
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    /* entry animation */
+    opacity: 0;
+    transform: translateY(25px);
+    animation: fadeUp 0.6s ease forwards;
+}
+
+/* smooth stagger only if many cards */
+.card:nth-child(n) {
+    animation-delay: calc(0.08s * var(--i));
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* hover effect */
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(255,255,255,0.15);
+    transition: 0.25s ease;
+}
+
+/* -------------------- TOP -------------------- */
+.card .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    padding: 4px;
+    border: 1px solid #e0e0e0;
+    object-fit: cover;
+}
+
+.top button {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    background: transparent;
+    font-size: 10px;
+    border-radius: 6px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    transition: 0.3s;
+}
+
+.top button:hover {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+/* -------------------- CENTER -------------------- */
+.center h3 {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.center h3 span {
+    font-size: 11px;
+    color: #777;
+    margin-left: 6px;
+}
+
+.center h2 {
+    font-size: 21px;
+    margin: 8px 0;
+}
+
+.center .tag {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.center .tag h4 {
+    padding: 5px 10px;
+    background: #f0f0f0;
+    font-size: 11px;
+    border-radius: 5px;
+}
+
+/* -------------------- BOTTOM -------------------- */
+.bottom {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom button {
+    padding: 8px 18px;
+    background: #000;
+    color: #fff;
+    border-radius: 6px;
+    border: none;
+    font-size: 12px;
+    transition: 0.2s;
+}
+
+.bottom button:hover {
+    background: #333;
+}
+
+.bottom h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.bottom p {
+    font-size: 11px;
+    color: #777;
+}
+
+/* -------------------- RESPONSIVE -------------------- */
+
+/* tablets: more spacing */
+@media (max-width: 900px) {
+    .parent {
+        padding: 40px 25px;
+        gap: 25px;
+    }
+}
+
+/* mobile: clean 1-column layout */
+@media (max-width: 550px) {
+    .parent {
+        padding: 25px 18px;
+    }
+
+    .card {
+        padding: 22px;
+        min-height: 330px;
+        border-radius: 18px;
+    }
+
+    .center h2 {
+        font-size: 18px;
+    }
+
+    .bottom button {
+        padding: 7px 15px;
+        font-size: 11px;
+    }
+}
