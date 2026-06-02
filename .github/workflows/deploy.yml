@@ -1,4 +1,4 @@
-name: Deploy Vite App
+name: Deploy Card Project to AWS
 
 on:
   push:
